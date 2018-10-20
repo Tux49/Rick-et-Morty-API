@@ -13,6 +13,7 @@ class CharactersController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        APIHelper().getCharacters(APIHelper().charactersUrl)
     }
 
 
