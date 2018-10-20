@@ -25,8 +25,19 @@ class APIHelper {
                     }
                     
                     if data != nil {
-                        
+                        do {
+                            let json = try JSONDecoder().decode(APIResult.self, from: data!)
+                            for character in json.results {
+                                    print(character.name)
+                                    print(character.gender)
+                            }
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    } else {
+                        print("Aucune data disponible")
                     }
+                    
             })
             task.resume()
         } else {

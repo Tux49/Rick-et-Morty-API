@@ -14,6 +14,7 @@
 		2CE450F0217A46E300821C92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CE450EE217A46E300821C92 /* LaunchScreen.storyboard */; };
 		2CE450F9217A4C8200821C92 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE450F8217A4C8200821C92 /* NavigationController.swift */; };
 		2CE450FC217B2CB300821C92 /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE450FB217B2CB300821C92 /* APIHelper.swift */; };
+		2CE450FE217B85CF00821C92 /* APIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE450FD217B85CF00821C92 /* APIResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		2CE450F1217A46E300821C92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CE450F8217A4C8200821C92 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		2CE450FB217B2CB300821C92 /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
+		2CE450FD217B85CF00821C92 /* APIResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				2CE450FB217B2CB300821C92 /* APIHelper.swift */,
+				2CE450FD217B85CF00821C92 /* APIResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CE450FC217B2CB300821C92 /* APIHelper.swift in Sources */,
+				2CE450FE217B85CF00821C92 /* APIResult.swift in Sources */,
 				2CE450E8217A46E200821C92 /* CharactersController.swift in Sources */,
 				2CE450F9217A4C8200821C92 /* NavigationController.swift in Sources */,
 				2CE450E6217A46E200821C92 /* AppDelegate.swift in Sources */,
