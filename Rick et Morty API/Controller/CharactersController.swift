@@ -10,12 +10,31 @@ import UIKit
 
 class CharactersController: UIViewController {
 
+    var nextPage = ""
+    var characters: [Character] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        APIHelper().getCharacters(APIHelper().charactersUrl)
+        getCharacters()
     }
 
-
+    func getCharacters() {
+        APIHelper().getCharacters(APIHelper().charactersUrl,
+            completion: { (nextPage, characters, errorString) in
+                if nextPage != nil {
+                    self.nextPage = nextPage!
+                }
+                
+                if errorString != nil {
+                    print(errorString!)
+                }
+                
+                if characters != nil {
+                    self.characters.append(contentsOf: characters!)
+                }
+        })
+    }
 }
+
 
