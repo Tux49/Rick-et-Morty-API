@@ -21,19 +21,59 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ihf-d9-crn">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="183" height="162"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="lJb-Kq-DLE">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CharacterCell" id="lJb-Kq-DLE" customClass="CharacterCell" customModule="Rick_et_Morty_API" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="183" height="162"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="183" height="162"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VsU-LZ-0LC">
+                                                    <rect key="frame" x="0.0" y="0.0" width="183" height="162"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="lcg-Db-1Mz">
+                                                            <rect key="frame" x="0.0" y="0.0" width="183" height="50"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="50" id="onK-xZ-PrP"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
+                                                            <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f5j-ww-ujx">
+                                                            <rect key="frame" x="0.0" y="50" width="183" height="112"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="f5j-ww-ujx" firstAttribute="top" secondItem="lcg-Db-1Mz" secondAttribute="bottom" id="8Zy-2c-FTJ"/>
+                                                        <constraint firstItem="lcg-Db-1Mz" firstAttribute="leading" secondItem="VsU-LZ-0LC" secondAttribute="leading" id="HC9-fa-74b"/>
+                                                        <constraint firstAttribute="trailing" secondItem="lcg-Db-1Mz" secondAttribute="trailing" id="NrS-3X-8Gv"/>
+                                                        <constraint firstAttribute="bottom" secondItem="f5j-ww-ujx" secondAttribute="bottom" id="VOq-lw-p9Z"/>
+                                                        <constraint firstAttribute="trailing" secondItem="f5j-ww-ujx" secondAttribute="trailing" id="hNk-I8-Kyh"/>
+                                                        <constraint firstItem="f5j-ww-ujx" firstAttribute="leading" secondItem="VsU-LZ-0LC" secondAttribute="leading" id="oBY-mh-efc"/>
+                                                        <constraint firstItem="lcg-Db-1Mz" firstAttribute="top" secondItem="VsU-LZ-0LC" secondAttribute="top" id="ybJ-dT-HCq"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="VsU-LZ-0LC" secondAttribute="bottom" id="5ya-YE-Sea"/>
+                                            <constraint firstAttribute="trailing" secondItem="VsU-LZ-0LC" secondAttribute="trailing" id="JNt-od-DiB"/>
+                                            <constraint firstItem="VsU-LZ-0LC" firstAttribute="top" secondItem="lJb-Kq-DLE" secondAttribute="top" id="Ogz-9d-8IP"/>
+                                            <constraint firstItem="VsU-LZ-0LC" firstAttribute="leading" secondItem="lJb-Kq-DLE" secondAttribute="leading" id="o53-6J-ip6"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="characterIV" destination="f5j-ww-ujx" id="5kv-fe-fxA"/>
+                                            <outlet property="holderView" destination="VsU-LZ-0LC" id="p3X-80-WTg"/>
+                                            <outlet property="nameLbl" destination="lcg-Db-1Mz" id="hCn-8N-ppj"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
