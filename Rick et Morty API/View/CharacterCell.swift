@@ -19,6 +19,6 @@ class CharacterCell: UICollectionViewCell {
     func setupCell(_ character: Character) {
         self.character = character
         self.nameLbl.text = self.character.name
-        
+        self.characterIV.download(self.character.image)
     }
 }
