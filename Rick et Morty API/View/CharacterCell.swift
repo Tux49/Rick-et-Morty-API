@@ -20,5 +20,7 @@ class CharacterCell: UICollectionViewCell {
         self.character = character
         self.nameLbl.text = self.character.name
         self.characterIV.download(self.character.image)
+        holderView.layer.cornerRadius = 25
+        holderView.clipsToBounds = true
     }
 }
