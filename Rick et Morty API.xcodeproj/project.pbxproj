@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2C79F887217F28B90041281D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C79F886217F28B90041281D /* DetailView.swift */; };
 		2C79F889217F28EE0041281D /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C79F888217F28EE0041281D /* DetailView.xib */; };
+		2CCF7220217FB714006A85B9 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCF721F217FB714006A85B9 /* SettingsController.swift */; };
 		2CE450E6217A46E200821C92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE450E5217A46E200821C92 /* AppDelegate.swift */; };
 		2CE450E8217A46E200821C92 /* CharactersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE450E7217A46E200821C92 /* CharactersController.swift */; };
 		2CE450EB217A46E200821C92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CE450E9217A46E200821C92 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		2C79F886217F28B90041281D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		2C79F888217F28EE0041281D /* DetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
+		2CCF721F217FB714006A85B9 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		2CE450E2217A46E200821C92 /* Rick et Morty API.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rick et Morty API.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CE450E5217A46E200821C92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CE450E7217A46E200821C92 /* CharactersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			children = (
 				2CE450E7217A46E200821C92 /* CharactersController.swift */,
 				2CE450F8217A4C8200821C92 /* NavigationController.swift */,
+				2CCF721F217FB714006A85B9 /* SettingsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CCF7220217FB714006A85B9 /* SettingsController.swift in Sources */,
 				2CE450FC217B2CB300821C92 /* APIHelper.swift in Sources */,
 				2C79F887217F28B90041281D /* DetailView.swift in Sources */,
 				2CE450FE217B85CF00821C92 /* APIResult.swift in Sources */,

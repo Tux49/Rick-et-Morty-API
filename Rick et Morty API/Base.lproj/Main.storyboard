@@ -111,20 +111,72 @@
             </objects>
             <point key="canvasLocation" x="1021.7391304347827" y="777.45535714285711"/>
         </scene>
-        <!--View Controller-->
+        <!--Title-->
         <scene sceneID="ehn-uq-p71">
             <objects>
-                <viewController id="qL4-eD-gww" sceneMemberID="viewController">
+                <viewController id="qL4-eD-gww" customClass="SettingsController" customModule="Rick_et_Morty_API" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="adz-td-Rcs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Entrez un nom" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J5M-I9-b1v">
+                                <rect key="frame" x="16" y="108" width="382" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="O8x-1q-2N2"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vq-mv-8nJ">
+                                <rect key="frame" x="20" y="158" width="304" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="JYN-BF-b7c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="daB-YH-Sgu">
+                                <rect key="frame" x="344" y="162" width="52" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="6Lg-bW-YVf"/>
+                                    <constraint firstAttribute="height" constant="31" id="Myq-Sb-vxu"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="switchChanged:" destination="qL4-eD-gww" eventType="valueChanged" id="dGS-kp-q4z"/>
+                                </connections>
+                            </switch>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="J5M-I9-b1v" firstAttribute="top" secondItem="zjj-ZM-tda" secondAttribute="top" constant="20" id="4WM-ut-uGj"/>
+                            <constraint firstItem="J5M-I9-b1v" firstAttribute="leading" secondItem="zjj-ZM-tda" secondAttribute="leading" constant="16" id="MDu-Se-EkR"/>
+                            <constraint firstItem="daB-YH-Sgu" firstAttribute="top" secondItem="J5M-I9-b1v" secondAttribute="bottom" constant="24" id="Vrt-bR-3fW"/>
+                            <constraint firstItem="1vq-mv-8nJ" firstAttribute="top" secondItem="J5M-I9-b1v" secondAttribute="bottom" constant="20" id="ism-ct-0Z4"/>
+                            <constraint firstItem="daB-YH-Sgu" firstAttribute="leading" secondItem="1vq-mv-8nJ" secondAttribute="trailing" constant="20" id="mU6-qM-XqB"/>
+                            <constraint firstItem="1vq-mv-8nJ" firstAttribute="leading" secondItem="zjj-ZM-tda" secondAttribute="leading" constant="20" id="oO4-Ld-tGF"/>
+                            <constraint firstItem="zjj-ZM-tda" firstAttribute="trailing" secondItem="J5M-I9-b1v" secondAttribute="trailing" constant="16" id="ph3-nJ-7ym"/>
+                            <constraint firstItem="zjj-ZM-tda" firstAttribute="trailing" secondItem="daB-YH-Sgu" secondAttribute="trailing" constant="20" id="yuq-Jy-luO"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="zjj-ZM-tda"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="2OB-Hm-rYq">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="zv9-qH-x7H">
+                            <connections>
+                                <action selector="saveAction:" destination="qL4-eD-gww" id="0vA-gw-DQ1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameTextField" destination="J5M-I9-b1v" id="u0m-L0-rEG"/>
+                        <outlet property="statusLbl" destination="1vq-mv-8nJ" id="n0c-Fl-Gra"/>
+                        <outlet property="statusSwitch" destination="daB-YH-Sgu" id="5bI-oD-1af"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ghY-cc-RMa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1920" y="777"/>
+            <point key="canvasLocation" x="1918.840579710145" y="776.78571428571422"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rey-et-TGP">
