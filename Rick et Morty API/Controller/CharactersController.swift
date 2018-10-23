@@ -30,6 +30,7 @@ class CharactersController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func animateIn(character: Character) {
+        detailView.setup(character: character)
         collectionView.alpha = 0
         detailView.alpha = 1
     }

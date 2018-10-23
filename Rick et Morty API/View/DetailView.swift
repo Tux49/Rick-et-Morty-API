@@ -29,6 +29,7 @@ class DetailView: UIView {
     }
 
     func loadXib() {
+        backgroundColor = .clear
         let bundle = Bundle(for: type(of: self))
         if let nibName = type(of: self).description().components(separatedBy: ".").last {
             let nib = UINib(nibName: nibName, bundle: bundle)
@@ -39,6 +40,28 @@ class DetailView: UIView {
                 view.backgroundColor = .white
                 view.layer.cornerRadius = 25
             }
+        }
+    }
+    
+    func setup(character: Character) {
+        characterIV.download(character.image)
+        characterIV.layer.cornerRadius = characterIV.frame.height / 2
+        characterIV.clipsToBounds = true
+        nameLbl.text = character.name
+        locationLbl.text = "Lieu: " + character.location.name
+        originLbl.text = "Origine: " + character.origin.name
+        speciesLbl.text = "Espèce: " + character.species
+        genderLbl.text = "Sexe: " + convertirDonneeEnEmoji(string: character.gender)
+        statusLbl.text = "Status: " + convertirDonneeEnEmoji(string: character.status)
+    }
+    
+    func convertirDonneeEnEmoji(string: String) -> String {
+        switch string {
+        case "Dead": return "☠️"
+        case "Alive": return "😃"
+        case "Male": return "🚹"
+        case "Female": return "🚺"
+        default: return "🤷‍♀️"
         }
     }
     
