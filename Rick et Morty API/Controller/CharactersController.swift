@@ -21,11 +21,11 @@ class CharactersController: UIViewController, UICollectionViewDelegate, UICollec
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        getCharacters()
+        getCharacters(url: APIHelper().charactersUrl)
     }
 
-    func getCharacters() {
-        APIHelper().getCharacters(APIHelper().charactersUrl,
+    func getCharacters(url: String) {
+        APIHelper().getCharacters(url,
             completion: { (nextPage, characters, errorString) in
                 if nextPage != nil {
                     self.nextPage = nextPage!
@@ -68,6 +68,15 @@ class CharactersController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let taille = collectionView.frame.width / 2 - 20
         return CGSize(width: taille, height: taille)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.item == characters.count - 1 {
+            // Téléchargement de la page suivante
+            if nextPage != "" {
+                getCharacters(url: nextPage)
+            }
+        }
     }
 }
 
