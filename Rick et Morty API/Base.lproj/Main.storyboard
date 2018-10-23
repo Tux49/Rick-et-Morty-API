@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YB1-Bu-ZFj">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YB1-Bu-ZFj" customClass="DetailView" customModule="Rick_et_Morty_API" customModuleProvider="target">
                                 <rect key="frame" x="20" y="108" width="374" height="734"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -104,6 +104,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="i7s-yD-f5z" id="eeQ-C3-Vdt"/>
+                        <outlet property="detailView" destination="YB1-Bu-ZFj" id="w6e-aJ-IB0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

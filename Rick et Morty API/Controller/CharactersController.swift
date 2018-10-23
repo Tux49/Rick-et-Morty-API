@@ -14,6 +14,7 @@ class CharactersController: UIViewController, UICollectionViewDelegate, UICollec
     var characters: [Character] = []
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var detailView: DetailView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +23,22 @@ class CharactersController: UIViewController, UICollectionViewDelegate, UICollec
         collectionView.dataSource = self
         
         getCharacters(url: APIHelper().charactersUrl)
+        
+        detailView.alpha = 0
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(animateOut), name: Notification.Name("close"), object: nil)
+    }
+    
+    func animateIn(character: Character) {
+        collectionView.alpha = 0
+        detailView.alpha = 1
     }
 
+    @objc func animateOut() {
+        collectionView.alpha = 1
+        detailView.alpha = 0
+    }
+    
     func getCharacters(url: String) {
         APIHelper().getCharacters(url,
             completion: { (nextPage, characters, errorString) in
@@ -77,6 +92,11 @@ class CharactersController: UIViewController, UICollectionViewDelegate, UICollec
                 getCharacters(url: nextPage)
             }
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let character = characters[indexPath.item]
+        animateIn(character: character)
     }
 }
 

@@ -10,6 +10,14 @@ import UIKit
 
 class DetailView: UIView {
 
+    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var characterIV: UIImageView!
+    @IBOutlet weak var statusLbl: UILabel!
+    @IBOutlet weak var genderLbl: UILabel!
+    @IBOutlet weak var speciesLbl: UILabel!
+    @IBOutlet weak var originLbl: UILabel!
+    @IBOutlet weak var locationLbl: UILabel!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadXib()
@@ -32,5 +40,9 @@ class DetailView: UIView {
                 view.layer.cornerRadius = 25
             }
         }
+    }
+    
+    @IBAction func closeAction(_ sender: Any) {
+            NotificationCenter.default.post(name: Notification.Name("close"), object: nil)
     }
 }
