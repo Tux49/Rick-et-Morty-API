@@ -16,12 +16,33 @@ class SettingsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupSwitch()
+        setupNameLabel()
+    }
+    
+    func setupSwitch() {
+        statusSwitch.setOn(UserDefaultsHelper().getStatus(), animated: true)
+        statusLbl.text = "Status: " + UserDefaultsHelper().getStatusString()
+    }
+    
+    func setupNameLabel() {
+        let name = UserDefaultsHelper().getName()
+        if name == "" {
+            nameTextField.placeholder = "Entrez un prénom"
+        } else {
+            nameTextField.text = name
+        }
     }
     
     @IBAction func switchChanged(_ sender: UISwitch) {
+        UserDefaultsHelper().setStatus(bool: sender.isOn)
+        setupSwitch()
     }
     
     @IBAction func saveAction(_ sender: Any) {
+        UserDefaultsHelper().setName(string: nameTextField.text)
+        navigationController?.popViewController(animated: true)
     }
     
 }

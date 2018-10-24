@@ -111,7 +111,7 @@
             </objects>
             <point key="canvasLocation" x="1021.7391304347827" y="777.45535714285711"/>
         </scene>
-        <!--Title-->
+        <!--Settings Controller-->
         <scene sceneID="ehn-uq-p71">
             <objects>
                 <viewController id="qL4-eD-gww" customClass="SettingsController" customModule="Rick_et_Morty_API" customModuleProvider="target" sceneMemberID="viewController">
@@ -161,7 +161,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zjj-ZM-tda"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="2OB-Hm-rYq">
+                    <navigationItem key="navigationItem" id="2OB-Hm-rYq">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="zv9-qH-x7H">
                             <connections>
                                 <action selector="saveAction:" destination="qL4-eD-gww" id="0vA-gw-DQ1"/>
