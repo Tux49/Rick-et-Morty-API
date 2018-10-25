@@ -8,13 +8,22 @@
 
 import UIKit
 
+enum TypeQuery {
+    case all
+    case query
+}
+
 class CharactersController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var detailView: DetailView!
+    @IBOutlet weak var segmented: UISegmentedControl!
     
     var nextPage = ""
     var characters: [Character] = []
+    
+    var nextPageQuery = ""
+    var charactersQuery: [Character] = []
 
     var cellImageFrame = CGRect()
     var detailImageFrame = CGRect()
@@ -26,11 +35,18 @@ class CharactersController: UIViewController, UICollectionViewDelegate, UICollec
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        getCharacters(url: APIHelper().charactersUrl)
+        getCharacters(url: APIHelper().charactersUrl, type: .all)
         
         detailView.alpha = 0
         
         NotificationCenter.default.addObserver(self, selector: #selector(animateOut), name: Notification.Name("close"), object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        nextPageQuery = ""
+        charactersQuery = []
+        getCharacters(url: APIHelper().urlAvecParam(), type: .query)
     }
     
     func animateIn(character: Character) {
@@ -64,11 +80,14 @@ class CharactersController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
-    func getCharacters(url: String) {
+    func getCharacters(url: String, type: TypeQuery) {
         APIHelper().getCharacters(url,
             completion: { (nextPage, characters, errorString) in
                 if nextPage != nil {
-                    self.nextPage = nextPage!
+                    switch type {
+                    case .all: self.nextPage = nextPage!
+                    case .query: self.nextPageQuery = nextPage!
+                    }
                 }
                 
                 if errorString != nil {
@@ -76,7 +95,10 @@ class CharactersController: UIViewController, UICollectionViewDelegate, UICollec
                 }
                 
                 if characters != nil {
-                    self.characters.append(contentsOf: characters!)
+                    switch type {
+                    case .all: self.characters.append(contentsOf: characters!)
+                    case .query: self.charactersQuery.append(contentsOf: characters!)
+                    }
                     
                     DispatchQueue.main.async {
                         self.collectionView.reloadData()
@@ -86,7 +108,10 @@ class CharactersController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return characters.count
+        if segmented.selectedSegmentIndex == 0 {
+            return characters.count
+        }
+        return charactersQuery.count
     }
     
     // Optionnelle si 1 section
@@ -95,7 +120,7 @@ class CharactersController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let character = characters[indexPath.item]
+        let character = segmented.selectedSegmentIndex == 0 ? characters[indexPath.item] : charactersQuery[indexPath.item]
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CharacterCell", for: indexPath) as? CharacterCell {
             cell.setupCell(character)
@@ -111,10 +136,14 @@ class CharactersController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.item == characters.count - 1 {
-            // Téléchargement de la page suivante
-            if nextPage != "" {
-                getCharacters(url: nextPage)
+        let count = segmented.selectedSegmentIndex == 0 ? characters.count : charactersQuery.count
+        
+        if indexPath.item == count - 1 {
+            if segmented.selectedSegmentIndex == 0 && nextPage != "" {
+                getCharacters(url: nextPage, type: .all)
+            }
+            if segmented.selectedSegmentIndex == 1 && nextPageQuery != "" {
+                getCharacters(url: nextPageQuery, type: .query)
             }
         }
     }
@@ -124,8 +153,15 @@ class CharactersController: UIViewController, UICollectionViewDelegate, UICollec
         let frame = collectionView.convert(layout.frame, to: collectionView.superview)
         cellImageFrame = CGRect(x: frame.minX, y: frame.minY + 50, width: frame.width, height: frame.height - 50)
         
-        let character = characters[indexPath.item]
-        animateIn(character: character)
+        switch segmented.selectedSegmentIndex {
+        case 0: animateIn(character: characters[indexPath.item])
+        case 1: animateIn(character: charactersQuery[indexPath.item])
+        default: break
+        }
+    }
+    
+    @IBAction func valueChanged(_ sender: UISegmentedControl) {
+        collectionView.reloadData()
     }
 }
 
